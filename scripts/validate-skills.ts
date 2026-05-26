@@ -30,6 +30,10 @@ export function validateSkills(skillsRoot: string): SkillValidationResult {
     }
 
     const skillMarkdown = fs.readFileSync(skillPath, 'utf8');
+    if (skillMarkdown.startsWith('\uFEFF')) {
+      errors.push(`${domainName}/SKILL.md 文件不能包含 UTF-8 BOM，请保存为 UTF-8 without BOM`);
+    }
+
     if (!skillMarkdown.includes('## API Resources')) {
       continue;
     }

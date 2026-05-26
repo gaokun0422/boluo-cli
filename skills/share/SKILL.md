@@ -1,4 +1,4 @@
-﻿---
+---
 name: boluo.share
 description: 当需要读取菠萝平台数据、配置 boluo-cli、处理 OpenAPI Key、解析 CLI JSON 输出或排查 boluo-cli 错误时使用。
 metadata:
