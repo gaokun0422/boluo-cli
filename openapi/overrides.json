@@ -1,0 +1,30 @@
+{
+  "source": "https://api3.boluo-ai.com/v3/api-docs/boluo-openapi",
+  "tagMappings": {
+    "OpenAPI - 素材库": {
+      "domain": "material",
+      "title": "素材库"
+    },
+    "OpenAPI - 图文批量生成": {
+      "domain": "project-note",
+      "title": "图文批量生成"
+    },
+    "OpenAPI - 视频拆条/剪辑": {
+      "domain": "video-clipping",
+      "title": "视频拆条/剪辑"
+    },
+    "OpenAPI - 声音克隆": {
+      "domain": "voice-clone",
+      "title": "声音克隆"
+    },
+    "OpenAPI - 数字人短视频": {
+      "domain": "digital-human-video",
+      "title": "数字人短视频"
+    },
+    "OpenAPI - 数字人形象克隆": {
+      "domain": "avatar-clone",
+      "title": "数字人形象克隆"
+    }
+  },
+  "riskOverrides": {}
+}

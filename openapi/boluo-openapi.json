@@ -1,0 +1,3598 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "菠萝 OpenAPI 对接文档",
+    "description": "使用管理后台签发的 JWT 密钥，在请求头 X-OpenApi-Key 中传递；tenant-id 可省略，由密钥自动注入租户。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://api3.boluo-ai.com",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "Authorization": []
+    },
+    {
+      "Authorization": []
+    },
+    {
+      "X-OpenApi-Key": []
+    }
+  ],
+  "paths": {
+    "/app-api/boluo/open-api/zc-material/update": {
+      "put": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "更新素材",
+        "operationId": "updateZcMaterial",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ZcMaterialSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/batch-mark-images-used": {
+      "put": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "批量标记门店图片为已使用",
+        "operationId": "batchMarkImagesUsed",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchMarkImagesUsedDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-voice-clone-task/update": {
+      "put": {
+        "tags": [
+          "OpenAPI - 声音克隆"
+        ],
+        "summary": "更新声音克隆任务",
+        "operationId": "updateSzrVoiceCloneTask",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SzrVoiceCloneTaskSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-video-tasks/update": {
+      "put": {
+        "tags": [
+          "OpenAPI - 数字人短视频"
+        ],
+        "summary": "更新数字人视频合成任务",
+        "operationId": "updateSzrVideoTasks",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SzrVideoTasksSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-avatar-clone-task/update": {
+      "put": {
+        "tags": [
+          "OpenAPI - 数字人形象克隆"
+        ],
+        "summary": "更新数字人形象克隆任务",
+        "operationId": "updateSzrAvatarCloneTask",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SzrAvatarCloneTaskSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-video-clipping-tasks/update": {
+      "put": {
+        "tags": [
+          "OpenAPI - 视频拆条/剪辑"
+        ],
+        "summary": "更新视频拆条任务",
+        "operationId": "updatePjVideoClippingTasks",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PjVideoClippingTasksSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-project-note/update": {
+      "put": {
+        "tags": [
+          "OpenAPI - 图文批量生成"
+        ],
+        "summary": "更新工程-批量生成-图文/脚本",
+        "operationId": "updatePjProjectNote",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PjProjectNoteSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-project-note/updateStatus": {
+      "put": {
+        "tags": [
+          "OpenAPI - 图文批量生成"
+        ],
+        "summary": "更新工程状态",
+        "operationId": "updateStatus",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PjProjectNoteUpdateStatusVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/get-random-images": {
+      "post": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "获取随机门店图片用于配图",
+        "operationId": "getRandomImages",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetRandomImagesReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultGetRandomImagesRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/get-batch-random-images": {
+      "post": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "批量获取随机门店图片配图",
+        "operationId": "getBatchRandomImages",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetBatchRandomImagesReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultGetBatchRandomImagesRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/create": {
+      "post": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "创建素材",
+        "operationId": "createZcMaterial",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ZcMaterialSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-voice-clone-task/create": {
+      "post": {
+        "tags": [
+          "OpenAPI - 声音克隆"
+        ],
+        "summary": "创建声音克隆任务",
+        "operationId": "createSzrVoiceCloneTask",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SzrVoiceCloneTaskSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-video-tasks/create": {
+      "post": {
+        "tags": [
+          "OpenAPI - 数字人短视频"
+        ],
+        "summary": "创建数字人视频合成任务",
+        "operationId": "createSzrVideoTasks",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SzrVideoTasksSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-avatar-clone-task/create": {
+      "post": {
+        "tags": [
+          "OpenAPI - 数字人形象克隆"
+        ],
+        "summary": "创建数字人形象克隆任务",
+        "operationId": "createSzrAvatarCloneTask",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SzrAvatarCloneTaskSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-video-clipping-tasks/save-audio-separation-tasks": {
+      "post": {
+        "tags": [
+          "OpenAPI - 视频拆条/剪辑"
+        ],
+        "summary": "发起获取视频拆分点任务(有回调)",
+        "operationId": "savePjAudioSeparationTasks",
+        "parameters": [
+          {
+            "name": "videoOssUrl",
+            "in": "query",
+            "description": "视频oss地址",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-video-clipping-tasks/create": {
+      "post": {
+        "tags": [
+          "OpenAPI - 视频拆条/剪辑"
+        ],
+        "summary": "创建视频拆条任务",
+        "operationId": "createPjVideoClippingTasks",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PjVideoClippingTasksSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-project-note/create": {
+      "post": {
+        "tags": [
+          "OpenAPI - 图文批量生成"
+        ],
+        "summary": "创建工程-批量生成-图文/脚本",
+        "operationId": "createPjProjectNote",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PjProjectNoteSaveReqVO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/page": {
+      "get": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "获得素材分页",
+        "operationId": "getZcMaterialPage",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "资源分类（运营使用）",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "资源分类（运营使用）"
+            }
+          },
+          {
+            "name": "mtypeList",
+            "in": "query",
+            "description": "资源类型",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "资源类型",
+              "example": [
+                "audio",
+                "video"
+              ],
+              "items": {
+                "type": "string",
+                "description": "资源类型",
+                "example": "[\"audio\",\"video\"]"
+              }
+            },
+            "example": [
+              "audio",
+              "video"
+            ]
+          },
+          {
+            "name": "subType",
+            "in": "query",
+            "description": "次级分类",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "次级分类",
+              "example": "bgm"
+            },
+            "example": "bgm"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "资源名称",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "资源名称",
+              "example": "王五"
+            },
+            "example": "王五"
+          },
+          {
+            "name": "duration",
+            "in": "query",
+            "description": "视频时长(秒)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "视频时长(秒)"
+            }
+          },
+          {
+            "name": "parentId",
+            "in": "query",
+            "description": "父级节点 ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "父级节点 ID",
+              "example": 21372
+            },
+            "example": 21372
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "标签",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "标签"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "资源体积(字节)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "资源体积(字节)"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "素材来源（用户、系统、三方）",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "素材来源（用户、系统、三方）"
+            }
+          },
+          {
+            "name": "isShopCatalog",
+            "in": "query",
+            "description": "是否门店目录",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "是否门店目录"
+            }
+          },
+          {
+            "name": "coverImg",
+            "in": "query",
+            "description": "封面图url",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "封面图url"
+            }
+          },
+          {
+            "name": "resourceJson",
+            "in": "query",
+            "description": "资源详情（oss返回的数据）",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "资源详情（oss返回的数据）"
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "query",
+            "description": "资源详细id",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "资源详细id"
+            }
+          },
+          {
+            "name": "ossUrl",
+            "in": "query",
+            "description": "ossurl",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "ossurl"
+            }
+          },
+          {
+            "name": "srtJson",
+            "in": "query",
+            "description": "字幕数据",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "字幕数据",
+              "example": "[{\"TimelineIn\":\"1\",\"TimelineOut\":\"2\",\"Content\":\"这是一个字幕\"}]"
+            },
+            "example": [
+              {
+                "TimelineIn": "1",
+                "TimelineOut": "2",
+                "Content": "这是一个字幕"
+              }
+            ]
+          },
+          {
+            "name": "folderCount",
+            "in": "query",
+            "description": "文件夹数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "文件夹数",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "audioCount",
+            "in": "query",
+            "description": "音频数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "音频数",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "projectVideoCount",
+            "in": "query",
+            "description": "视频工程数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "视频工程数",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "projectTuwenCount",
+            "in": "query",
+            "description": "图文工程数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "图文工程数",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "resCount",
+            "in": "query",
+            "description": "成片数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "成片数",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "videoCount",
+            "in": "query",
+            "description": "视频数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "视频数",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "imgCount",
+            "in": "query",
+            "description": "图片数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "图片数",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "scriptCount",
+            "in": "query",
+            "description": "脚本数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "脚本数",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "description": "门店ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "门店ID",
+              "example": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "innerType",
+            "in": "query",
+            "description": "内部类型",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "内部类型",
+              "example": "x1"
+            },
+            "example": "x1"
+          },
+          {
+            "name": "frameCount",
+            "in": "query",
+            "description": "gif图片帧数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "gif图片帧数"
+            }
+          },
+          {
+            "name": "createTime",
+            "in": "query",
+            "description": "创建时间",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "创建时间",
+              "items": {
+                "type": "string",
+                "format": "date-time",
+                "description": "创建时间"
+              }
+            }
+          },
+          {
+            "name": "remark",
+            "in": "query",
+            "description": "备注",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "备注",
+              "example": "随便"
+            },
+            "example": "随便"
+          },
+          {
+            "name": "searchKey",
+            "in": "query",
+            "description": "关键字",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "关键字",
+              "example": "随便"
+            },
+            "example": "随便"
+          },
+          {
+            "name": "isUsed",
+            "in": "query",
+            "description": "查询已使用",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "查询已使用",
+              "example": false
+            },
+            "example": false
+          },
+          {
+            "name": "materialIds",
+            "in": "query",
+            "description": "素材id集合",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "素材id集合",
+              "example": "随便",
+              "items": {
+                "type": "integer",
+                "format": "int64",
+                "description": "素材id集合"
+              }
+            },
+            "example": "随便"
+          },
+          {
+            "name": "tagId",
+            "in": "query",
+            "description": "标签ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "标签ID",
+              "example": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "excludePermissionIds",
+            "in": "query",
+            "description": "绕过数据权限的ID列表（这些ID不受部门权限限制）",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "绕过数据权限的ID列表（这些ID不受部门权限限制）",
+              "items": {
+                "type": "integer",
+                "format": "int64",
+                "description": "绕过数据权限的ID列表（这些ID不受部门权限限制）"
+              }
+            }
+          },
+          {
+            "name": "formatList",
+            "in": "query",
+            "description": "文件格式列表 (mp4/jpg/png/mp3)",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "文件格式列表 (mp4/jpg/png/mp3)",
+              "example": [
+                "mp4",
+                "jpg"
+              ],
+              "items": {
+                "type": "string",
+                "description": "文件格式列表 (mp4/jpg/png/mp3)",
+                "example": "[\"mp4\",\"jpg\"]"
+              }
+            },
+            "example": [
+              "mp4",
+              "jpg"
+            ]
+          },
+          {
+            "name": "durationRange",
+            "in": "query",
+            "description": "视频时长范围(秒)",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "视频时长范围(秒)",
+              "example": [
+                0,
+                60
+              ],
+              "items": {
+                "type": "integer",
+                "format": "int32",
+                "description": "视频时长范围(秒)"
+              }
+            },
+            "example": [
+              0,
+              60
+            ]
+          },
+          {
+            "name": "sizeRange",
+            "in": "query",
+            "description": "文件大小范围(字节)",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "文件大小范围(字节)",
+              "example": [
+                0,
+                104857600
+              ],
+              "items": {
+                "type": "integer",
+                "format": "int64",
+                "description": "文件大小范围(字节)"
+              }
+            },
+            "example": [
+              0,
+              104857600
+            ]
+          },
+          {
+            "name": "colorPalette",
+            "in": "query",
+            "description": "颜色调色板搜索关键字",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "颜色调色板搜索关键字"
+            }
+          },
+          {
+            "name": "tagIdList",
+            "in": "query",
+            "description": "标签ID列表（多标签筛选）",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "标签ID列表（多标签筛选）",
+              "items": {
+                "type": "integer",
+                "format": "int64",
+                "description": "标签ID列表（多标签筛选）"
+              }
+            }
+          },
+          {
+            "name": "searchText",
+            "in": "query",
+            "description": "语义搜索文本（支持以文搜图/视频）",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "语义搜索文本（支持以文搜图/视频）",
+              "example": "美食"
+            },
+            "example": "美食"
+          },
+          {
+            "name": "aiAnalysisStatus",
+            "in": "query",
+            "description": "AI解析状态 (0:未解析 1:解析中 2:已完成 3:失败)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "AI解析状态 (0:未解析 1:解析中 2:已完成 3:失败)"
+            }
+          },
+          {
+            "name": "shapeType",
+            "in": "query",
+            "description": "形状类型：horizontal-横图(宽>高), vertical-竖图(高>宽), custom-自定义比例",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "形状类型：horizontal-横图(宽>高), vertical-竖图(高>宽), custom-自定义比例"
+            }
+          },
+          {
+            "name": "shapeRatio",
+            "in": "query",
+            "description": "自定义比例值（shapeType=custom时使用），如1.78表示16:9",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "自定义比例值（shapeType=custom时使用），如1.78表示16:9"
+            }
+          },
+          {
+            "name": "shapeRatioTolerance",
+            "in": "query",
+            "description": "自定义比例容差（shapeType=custom 时使用），默认 0.1",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "自定义比例容差（shapeType=custom 时使用），默认 0.1"
+            }
+          },
+          {
+            "name": "smartFolderId",
+            "in": "query",
+            "description": "智能文件夹 ID (查询智能文件夹下的素材)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "智能文件夹 ID (查询智能文件夹下的素材)",
+              "example": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "expired",
+            "in": "query",
+            "description": "是否因过期已下架 (0:否 1:是)，按表字段 expired 筛选",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "是否因过期已下架 (0:否 1:是)，按表字段 expired 筛选",
+              "example": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "favoriteOnly",
+            "in": "query",
+            "description": "为 true 时仅返回当前登录用户已收藏的素材",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "为 true 时仅返回当前登录用户已收藏的素材"
+            }
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "description": "排序字段：recommended-推荐(按 id，与历史默认一致)；create_time；update_time；name；size；duration。 触发关键词向量合并检索（searchKey 走语义搜索）时忽略此参数与 sortAsc。",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "排序字段：recommended-推荐(按 id，与历史默认一致)；create_time；update_time；name；size；duration。 触发关键词向量合并检索（searchKey 走语义搜索）时忽略此参数与 sortAsc。",
+              "enum": [
+                "recommended",
+                "create_time",
+                "update_time",
+                "name",
+                "size",
+                "duration"
+              ]
+            }
+          },
+          {
+            "name": "sortDesc",
+            "in": "query",
+            "description": "是否升序；未传时视为升序（与列表默认一致）",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "是否升序；未传时视为升序（与列表默认一致）"
+            }
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "description": "创建人",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "创建人"
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码，从 1 开始",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "页码，从 1 开始",
+              "example": 1,
+              "minimum": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数，最大值为 100",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "每页条数，最大值为 100",
+              "example": 10,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 10
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPageResultZcMaterialRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/init-folder": {
+      "get": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "初始化门店素材文件夹",
+        "operationId": "initFolder",
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "query",
+            "description": "门店ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/get": {
+      "get": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "获得素材",
+        "operationId": "getZcMaterial",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1024
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultZcMaterialRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/get-tree": {
+      "get": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "获取门店素材树",
+        "operationId": "getTree",
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "innerType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultListZcMaterialOpenDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-voice-clone-task/page": {
+      "get": {
+        "tags": [
+          "OpenAPI - 声音克隆"
+        ],
+        "summary": "获得声音克隆任务分页",
+        "operationId": "getSzrVoiceCloneTaskPage",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "声音名称",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "声音名称",
+              "example": "李四"
+            },
+            "example": "李四"
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "description": "声音链接(支持mp3,wav,m4a格式)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "声音链接(支持mp3,wav,m4a格式)",
+              "example": "https://www.iocoder.cn"
+            },
+            "example": "https://www.iocoder.cn"
+          },
+          {
+            "name": "modelType",
+            "in": "query",
+            "description": "模型类型: cicada1.0/cicada3.0",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "模型类型: cicada1.0/cicada3.0",
+              "example": "1"
+            },
+            "example": 1
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "语种: cn/en",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "语种: cn/en"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "声音预览文案(不超过50字符)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "声音预览文案(不超过50字符)"
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "回调地址",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "回调地址"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "任务状态：pending/processing/completed/failed",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "任务状态：pending/processing/completed/failed",
+              "example": "pending"
+            },
+            "example": "pending"
+          },
+          {
+            "name": "remark",
+            "in": "query",
+            "description": "备注",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "备注",
+              "example": "你猜"
+            },
+            "example": "你猜"
+          },
+          {
+            "name": "createTime",
+            "in": "query",
+            "description": "创建时间",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "创建时间",
+              "items": {
+                "type": "string",
+                "format": "date-time",
+                "description": "创建时间"
+              }
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "description": "店铺id",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "店铺id"
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码，从 1 开始",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "页码，从 1 开始",
+              "example": 1,
+              "minimum": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数，最大值为 100",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "每页条数，最大值为 100",
+              "example": 10,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 10
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPageResultSzrVoiceCloneTaskRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-voice-clone-task/get": {
+      "get": {
+        "tags": [
+          "OpenAPI - 声音克隆"
+        ],
+        "summary": "获得声音克隆任务",
+        "operationId": "getSzrVoiceCloneTask",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1024
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSzrVoiceCloneTaskRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-video-tasks/page": {
+      "get": {
+        "tags": [
+          "OpenAPI - 数字人短视频"
+        ],
+        "summary": "获得数字人视频合成任务分页",
+        "operationId": "getSzrVideoTasksPage",
+        "parameters": [
+          {
+            "name": "videoTaskName",
+            "in": "query",
+            "description": "视频任务名称",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "视频任务名称"
+            }
+          },
+          {
+            "name": "screenWidth",
+            "in": "query",
+            "description": "屏幕宽度",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "屏幕宽度"
+            }
+          },
+          {
+            "name": "screenHeight",
+            "in": "query",
+            "description": "屏幕高度",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "屏幕高度"
+            }
+          },
+          {
+            "name": "resolutionRate",
+            "in": "query",
+            "description": "数字人分辨率：0-1080p，1-4K",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "数字人分辨率：0-1080p，1-4K"
+            }
+          },
+          {
+            "name": "bgColor",
+            "in": "query",
+            "description": "背景颜色",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "背景颜色"
+            }
+          },
+          {
+            "name": "progress",
+            "in": "query",
+            "description": "任务进度0-100",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "任务进度0-100"
+            }
+          },
+          {
+            "name": "msg",
+            "in": "query",
+            "description": "异常或失败的错误信息",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "异常或失败的错误信息"
+            }
+          },
+          {
+            "name": "videoUrl",
+            "in": "query",
+            "description": "视频播放地址",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "视频播放地址",
+              "example": "https://www.iocoder.cn"
+            },
+            "example": "https://www.iocoder.cn"
+          },
+          {
+            "name": "subtitleDataUrl",
+            "in": "query",
+            "description": "字幕时间轴文件URL",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "字幕时间轴文件URL",
+              "example": "https://www.iocoder.cn"
+            },
+            "example": "https://www.iocoder.cn"
+          },
+          {
+            "name": "previewUrl",
+            "in": "query",
+            "description": "视频预览图片URL",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "视频预览图片URL",
+              "example": "https://www.iocoder.cn"
+            },
+            "example": "https://www.iocoder.cn"
+          },
+          {
+            "name": "duration",
+            "in": "query",
+            "description": "视频时长(秒)",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "视频时长(秒)"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "任务状态：pending/processing/completed/failed",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "任务状态：pending/processing/completed/failed",
+              "example": "2"
+            },
+            "example": 2
+          },
+          {
+            "name": "chanJingTaskStatus",
+            "in": "query",
+            "description": "状态:10=生成中,30=成功,4X=参数异常,5X=服务异常",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "状态:10=生成中,30=成功,4X=参数异常,5X=服务异常",
+              "example": 2
+            },
+            "example": 2
+          },
+          {
+            "name": "remark",
+            "in": "query",
+            "description": "备注",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "备注",
+              "example": "你说的对"
+            },
+            "example": "你说的对"
+          },
+          {
+            "name": "createTime",
+            "in": "query",
+            "description": "创建时间",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "创建时间",
+              "items": {
+                "type": "string",
+                "format": "date-time",
+                "description": "创建时间"
+              }
+            }
+          },
+          {
+            "name": "appPlat",
+            "in": "query",
+            "description": "客户端平台",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "客户端平台"
+            }
+          },
+          {
+            "name": "openId",
+            "in": "query",
+            "description": "用户id",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "用户id"
+            }
+          },
+          {
+            "name": "appId",
+            "in": "query",
+            "description": "客户端id",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "客户端id"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "description": "店铺id",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "店铺id"
+            }
+          },
+          {
+            "name": "deptId",
+            "in": "query",
+            "description": "部门id",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "部门id"
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码，从 1 开始",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "页码，从 1 开始",
+              "example": 1,
+              "minimum": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数，最大值为 100",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "每页条数，最大值为 100",
+              "example": 10,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 10
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPageResultSzrVideoTasksRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-video-tasks/get": {
+      "get": {
+        "tags": [
+          "OpenAPI - 数字人短视频"
+        ],
+        "summary": "获得数字人视频合成任务",
+        "operationId": "getSzrVideoTasks",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1024
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSzrVideoTasksRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-avatar-clone-task/page": {
+      "get": {
+        "tags": [
+          "OpenAPI - 数字人形象克隆"
+        ],
+        "summary": "获得数字人形象克隆任务分页",
+        "operationId": "getSzrAvatarCloneTaskPage",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "定制数字人名称",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "定制数字人名称",
+              "example": "赵六"
+            },
+            "example": "赵六"
+          },
+          {
+            "name": "materialVideo",
+            "in": "query",
+            "description": "外网可下载播放的视频文件链接",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "外网可下载播放的视频文件链接"
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "回调地址",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "回调地址"
+            }
+          },
+          {
+            "name": "trainType",
+            "in": "query",
+            "description": "训练类型：figure【仅生成形象形象,允许传递无声视频】",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "训练类型：figure【仅生成形象形象,允许传递无声视频】",
+              "example": "1"
+            },
+            "example": 1
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "语种：默认为cn,支持en英文,其他语种暂不支持",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "语种：默认为cn,支持en英文,其他语种暂不支持"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "任务状态：pending/processing/completed/failed",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "任务状态：pending/processing/completed/failed",
+              "example": "pending"
+            },
+            "example": "pending"
+          },
+          {
+            "name": "remark",
+            "in": "query",
+            "description": "备注",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "备注",
+              "example": "你说的对"
+            },
+            "example": "你说的对"
+          },
+          {
+            "name": "resolutionRate",
+            "in": "query",
+            "description": "数字人分辨率：0-1080p，1-4K",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "数字人分辨率：0-1080p，1-4K"
+            }
+          },
+          {
+            "name": "createTime",
+            "in": "query",
+            "description": "创建时间",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "创建时间",
+              "items": {
+                "type": "string",
+                "format": "date-time",
+                "description": "创建时间"
+              }
+            }
+          },
+          {
+            "name": "appPlat",
+            "in": "query",
+            "description": "客户端平台",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "客户端平台"
+            }
+          },
+          {
+            "name": "openId",
+            "in": "query",
+            "description": "用户id",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "用户id"
+            }
+          },
+          {
+            "name": "appId",
+            "in": "query",
+            "description": "客户端id",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "客户端id"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "description": "店铺id",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "店铺id"
+            }
+          },
+          {
+            "name": "chanJingPersonId",
+            "in": "query",
+            "description": "蝉镜数字人形象id",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "蝉镜数字人形象id"
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码，从 1 开始",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "页码，从 1 开始",
+              "example": 1,
+              "minimum": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数，最大值为 100",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "每页条数，最大值为 100",
+              "example": 10,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 10
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPageResultSzrAvatarCloneTaskRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-avatar-clone-task/get": {
+      "get": {
+        "tags": [
+          "OpenAPI - 数字人形象克隆"
+        ],
+        "summary": "获得数字人形象克隆任务",
+        "operationId": "getSzrAvatarCloneTask",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1024
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSzrAvatarCloneTaskRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-video-clipping-tasks/page": {
+      "get": {
+        "tags": [
+          "OpenAPI - 视频拆条/剪辑"
+        ],
+        "summary": "获得视频拆条任务分页",
+        "operationId": "getPjVideoClippingTasksPage",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "query",
+            "description": "主任务ID",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "主任务ID",
+              "example": "12468"
+            },
+            "example": 12468
+          },
+          {
+            "name": "jobId",
+            "in": "query",
+            "description": "阿里云任务ID",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "阿里云任务ID",
+              "example": "27080-18882-1828"
+            },
+            "example": "27080-18882-1828"
+          },
+          {
+            "name": "taskSourceType",
+            "in": "query",
+            "description": "0-爆款解析、1-单独使用",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "0-爆款解析、1-单独使用",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "resultJson",
+            "in": "query",
+            "description": "结果json：{\"video_oss_url\":\"http\"}",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "结果json：{\"video_oss_url\":\"http\"}"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态：-1失败 0未开始，1进行中，2已完成",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "状态：-1失败 0未开始，1进行中，2已完成",
+              "example": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "createTime",
+            "in": "query",
+            "description": "创建时间",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "创建时间",
+              "items": {
+                "type": "string",
+                "format": "date-time",
+                "description": "创建时间"
+              }
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码，从 1 开始",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "页码，从 1 开始",
+              "example": 1,
+              "minimum": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数，最大值为 100",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "每页条数，最大值为 100",
+              "example": 10,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 10
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPageResultPjVideoClippingTasksRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-video-clipping-tasks/get": {
+      "get": {
+        "tags": [
+          "OpenAPI - 视频拆条/剪辑"
+        ],
+        "summary": "获得视频拆条任务",
+        "operationId": "getPjVideoClippingTasks",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1024
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPjVideoClippingTasksRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-project-note/pj-project-note-scene/list-by-project-id": {
+      "get": {
+        "tags": [
+          "OpenAPI - 图文批量生成"
+        ],
+        "summary": "获得项目场景主列表",
+        "operationId": "getPjProjectNoteSceneListByProjectId",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "description": "所属项目ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultListPjProjectNoteSceneDO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-project-note/pj-project-note-config/get-by-project-id": {
+      "get": {
+        "tags": [
+          "OpenAPI - 图文批量生成"
+        ],
+        "summary": "获得工程-批量生成-图文/脚本生成参数",
+        "operationId": "getPjProjectNoteConfigByProjectId",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "description": "关联的项目id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPjProjectNoteConfigDO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-project-note/page": {
+      "get": {
+        "tags": [
+          "OpenAPI - 图文批量生成"
+        ],
+        "summary": "获得工程-批量生成-图文/脚本分页",
+        "operationId": "getPjProjectNotePage",
+        "parameters": [
+          {
+            "name": "parentId",
+            "in": "query",
+            "description": "父文件夹ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "description": "父文件夹ID",
+              "example": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "batchIndex",
+            "in": "query",
+            "description": "生成批次ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "生成批次ID",
+              "example": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "项目标题",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "项目标题"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "项目类型",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "项目类型",
+              "example": "note图文，video短视频"
+            },
+            "example": "note图文，video短视频"
+          },
+          {
+            "name": "scriptTitle",
+            "in": "query",
+            "description": "脚本标题",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "脚本标题"
+            }
+          },
+          {
+            "name": "cover",
+            "in": "query",
+            "description": "项目封面图url",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "项目封面图url"
+            }
+          },
+          {
+            "name": "composeType",
+            "in": "query",
+            "description": "合成类型",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "合成类型",
+              "example": "1"
+            },
+            "example": 1
+          },
+          {
+            "name": "ratio",
+            "in": "query",
+            "description": "视频宽高比",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "视频宽高比"
+            }
+          },
+          {
+            "name": "padding",
+            "in": "query",
+            "description": "填充方式",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "填充方式"
+            }
+          },
+          {
+            "name": "activeTemplateIndex",
+            "in": "query",
+            "description": "当前激活的模板索引",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "当前激活的模板索引"
+            }
+          },
+          {
+            "name": "durationMode",
+            "in": "query",
+            "description": "时长模式",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "时长模式"
+            }
+          },
+          {
+            "name": "duplicateConfig",
+            "in": "query",
+            "description": "去重clip",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "去重clip"
+            }
+          },
+          {
+            "name": "remark",
+            "in": "query",
+            "description": "备注",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "备注",
+              "example": "你说的对"
+            },
+            "example": "你说的对"
+          },
+          {
+            "name": "createTime",
+            "in": "query",
+            "description": "创建时间",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "description": "创建时间",
+              "items": {
+                "type": "string",
+                "format": "date-time",
+                "description": "创建时间"
+              }
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码，从 1 开始",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "页码，从 1 开始",
+              "example": 1,
+              "minimum": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数，最大值为 100",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "description": "每页条数，最大值为 100",
+              "example": 10,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 10
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPageResultPjProjectNoteRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-project-note/get": {
+      "get": {
+        "tags": [
+          "OpenAPI - 图文批量生成"
+        ],
+        "summary": "获得工程-批量生成-图文/脚本",
+        "operationId": "getPjProjectNote",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1024
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultPjProjectNoteRespVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/zc-material/delete": {
+      "delete": {
+        "tags": [
+          "OpenAPI - 素材库"
+        ],
+        "summary": "删除素材",
+        "operationId": "deleteZcMaterial",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-voice-clone-task/delete": {
+      "delete": {
+        "tags": [
+          "OpenAPI - 声音克隆"
+        ],
+        "summary": "删除声音克隆任务",
+        "operationId": "deleteSzrVoiceCloneTask",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-video-tasks/delete": {
+      "delete": {
+        "tags": [
+          "OpenAPI - 数字人短视频"
+        ],
+        "summary": "删除数字人视频合成任务",
+        "operationId": "deleteSzrVideoTasks",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/szr-avatar-clone-task/delete": {
+      "delete": {
+        "tags": [
+          "OpenAPI - 数字人形象克隆"
+        ],
+        "summary": "删除数字人形象克隆任务",
+        "operationId": "deleteSzrAvatarCloneTask",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-video-clipping-tasks/delete": {
+      "delete": {
+        "tags": [
+          "OpenAPI - 视频拆条/剪辑"
+        ],
+        "summary": "删除视频拆条任务",
+        "operationId": "deletePjVideoClippingTasks",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app-api/boluo/open-api/pj-project-note/delete": {
+      "delete": {
+        "tags": [
+          "OpenAPI - 图文批量生成"
+        ],
+        "summary": "删除工程-批量生成-图文/脚本",
+        "operationId": "deletePjProjectNote",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "编号",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenant-id",
+            "in": "header",
+            "description": "租户编号",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1,
+              "description": "租户编号"
+            }
+          },
+          {
+            "name": "X-OpenApi-Key",
+            "in": "header",
+            "description": "OpenAPI JWT 密钥",
+            "schema": {
+              "type": "string",
+              "description": "OpenAPI JWT 密钥"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "X-OpenApi-Key": {
+        "type": "apiKey",
+        "name": "X-OpenApi-Key",
+        "in": "header"
+      }
+    }
+  }
+}

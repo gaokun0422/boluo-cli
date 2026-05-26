@@ -1,0 +1,53 @@
+{
+  "name": "boluo-cli",
+  "version": "0.3.3",
+  "description": "Boluo platform CLI and Agent Skills.",
+  "bin": "boluo-cli",
+  "skills": [
+    "skills/share/SKILL.md",
+    "skills/material/SKILL.md"
+  ],
+  "capabilities": [
+    {
+      "name": "material",
+      "description": "Search Boluo material library assets and read material details for images, videos, folders, posters, tags, covers, and AI analysis.",
+      "requires": {
+        "bins": [
+          "boluo-cli"
+        ],
+        "versions": {
+          "boluo-cli": ">=0.3.3"
+        }
+      },
+      "commands": [
+        "boluo-cli help",
+        "boluo-cli --version",
+        "boluo-cli doctor --json",
+        "boluo-cli doctor --json --check-api",
+        "boluo-cli schema material.zc-material.page",
+        "boluo-cli material page --params <json> --json",
+        "boluo-cli schema material.zc-material.get",
+        "boluo-cli material get --params <json> --json"
+      ],
+      "install": [
+        "npm install -g boluo-cli",
+        "npx skills add gaokun0422/boluo-cli -y -g"
+      ],
+      "environment": [
+        "BOLUO_OPENAPI_KEY",
+        "BOLUO_OPENAPI_ENDPOINT"
+      ],
+      "triggers": [
+        "素材库",
+        "素材",
+        "图片素材",
+        "视频素材",
+        "文件夹",
+        "海报",
+        "物料",
+        "资源",
+        "素材详情"
+      ]
+    }
+  ]
+}

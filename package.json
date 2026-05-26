@@ -1,0 +1,61 @@
+{
+  "name": "boluo-cli",
+  "version": "0.3.3",
+  "description": "Boluo platform capability kit for agents.",
+  "type": "module",
+  "bin": {
+    "boluo-cli": "bin/boluo-cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./ai-sdk": "./dist/ai-sdk/index.js",
+    "./core": "./dist/core/index.js",
+    "./contracts": "./dist/contracts/index.js",
+    "./runtime": "./dist/runtime/index.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "skills",
+    "manifest.json",
+    "README.md"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "clean": "node -e \"const fs=require('node:fs'); for (const p of ['dist','dist-test']) fs.rmSync(p,{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "openapi:fetch": "tsx scripts/fetch-openapi.ts",
+    "openapi:generate": "tsx scripts/generate-registry.ts",
+    "skills:generate": "tsx scripts/generate-skills.ts",
+    "skills:validate": "tsx scripts/validate-skills.ts",
+    "pack:dry-run": "npm pack --dry-run --json",
+    "prepare": "npm run build",
+    "prepack": "npm run typecheck",
+    "test": "node --test dist-test/tests/**/*.test.js",
+    "typecheck": "tsc --noEmit -p tsconfig.test.json",
+    "pretest": "npm run build && tsc -p tsconfig.test.json"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "ai": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "ai": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/json-schema": "^7.0.15",
+    "@types/node": "^25.8.0",
+    "ai": "^6.0.184",
+    "tsx": "^4.20.6",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
