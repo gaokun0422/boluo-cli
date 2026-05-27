@@ -5,6 +5,7 @@ import {
   boluoOpenApiRegistry,
   getRegistryOperation,
 } from '../../registry/index.js';
+import type { RegistryMethod, RegistryParameter } from '../../registry/types.js';
 
 type RegistryCliOptions = {
   data?: Record<string, unknown>;
@@ -13,6 +14,10 @@ type RegistryCliOptions = {
   openApiKey?: string;
   params?: Record<string, unknown>;
   yes?: boolean;
+};
+
+type RunRegistryCommandOptions = {
+  parseFlatParams?: boolean;
 };
 
 const booleanFlags = new Set(['--json', '--yes']);
@@ -58,7 +63,11 @@ function readJsonObjectFlag(
   return value as Record<string, unknown>;
 }
 
-function parseRegistryOptions(args: string[]): RegistryCliOptions {
+function parseRegistryOptions(
+  args: string[],
+  operation?: RegistryMethod,
+  parseFlatParams = false,
+): RegistryCliOptions {
   const options: RegistryCliOptions = {};
 
   for (let index = 0; index < args.length; index += 1) {
@@ -73,7 +82,10 @@ function parseRegistryOptions(args: string[]): RegistryCliOptions {
       continue;
     }
 
-    if (!valueFlags.has(flag)) {
+    const flatParam = parseFlatParams && operation
+      ? operation.parameters.find((parameter) => `--${toKebabCase(parameter.name)}` === flag)
+      : undefined;
+    if (!valueFlags.has(flag) && !flatParam) {
       throw new Error(`未知参数：${flag}`);
     }
 
@@ -85,6 +97,11 @@ function parseRegistryOptions(args: string[]): RegistryCliOptions {
       options.openApiKey = readFlagValue(args, index, flag);
     } else if (flag === '--params') {
       options.params = readJsonObjectFlag(args, index, flag);
+    } else if (flatParam) {
+      options.params = {
+        ...options.params,
+        [flatParam.name]: readFlatParamValue(args, index, flag, flatParam),
+      };
     }
     index += 1;
   }
@@ -105,6 +122,7 @@ export async function runRegistryCommand(
   resource: string | undefined,
   method: string | undefined,
   args: string[],
+  options: RunRegistryCommandOptions = {},
 ): Promise<unknown> {
   if (!domain || !resource || !method) {
     throw new BoluoAgentKitError(
@@ -124,16 +142,16 @@ export async function runRegistryCommand(
   const operation =
     boluoOpenApiRegistry.domains[result.domain].resources[result.resource]
       .methods[result.method];
-  const options = parseRegistryOptions(args);
+  const cliOptions = parseRegistryOptions(args, operation, options.parseFlatParams);
 
-  if (operation.httpMethod === 'GET' && options.data !== undefined) {
+  if (operation.httpMethod === 'GET' && cliOptions.data !== undefined) {
     throw new BoluoAgentKitError(
       'INVALID_INPUT',
       '--data 不能用于 GET 接口',
     );
   }
 
-  if (operation.risk === 'high-risk-write' && !options.yes) {
+  if (operation.risk === 'high-risk-write' && !cliOptions.yes) {
     throw new BoluoAgentKitError(
       'CONFIRMATION_REQUIRED',
       `高风险接口需要显式确认：${domain} ${resource} ${method}`,
@@ -141,13 +159,59 @@ export async function runRegistryCommand(
   }
 
   return requestBoluoOpenApi({
-    body: options.data,
+    body: cliOptions.data,
     config: resolveBoluoConfig({
-      apiEndpoint: options.openApiEndpoint,
-      openApiKey: options.openApiKey,
+      apiEndpoint: cliOptions.openApiEndpoint,
+      openApiKey: cliOptions.openApiKey,
     }),
     method: operation.httpMethod,
-    params: options.params,
+    params: cliOptions.params,
     path: operation.path,
   });
+}
+
+function readFlatParamValue(
+  args: string[],
+  index: number,
+  flag: string,
+  parameter: RegistryParameter,
+): unknown {
+  const rawValue = readFlagValue(args, index, flag);
+  const schema = parameter.schema && typeof parameter.schema === 'object' && !Array.isArray(parameter.schema)
+    ? parameter.schema as { type?: unknown }
+    : {};
+
+  if (schema.type === 'integer' || schema.type === 'number') {
+    const value = Number(rawValue);
+    if (Number.isNaN(value)) {
+      throw new BoluoAgentKitError(
+        'INVALID_INPUT',
+        `${flag} 必须是数字`,
+      );
+    }
+    return value;
+  }
+
+  if (schema.type === 'boolean') {
+    if (rawValue === 'true') return true;
+    if (rawValue === 'false') return false;
+    throw new BoluoAgentKitError(
+      'INVALID_INPUT',
+      `${flag} 必须是 true 或 false`,
+    );
+  }
+
+  if (schema.type === 'array') {
+    return rawValue.split(',').map((item) => item.trim()).filter(Boolean);
+  }
+
+  return rawValue;
+}
+
+function toKebabCase(value: string): string {
+  return value
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/[^a-zA-Z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .toLowerCase();
 }

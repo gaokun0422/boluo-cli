@@ -62,7 +62,13 @@ Agent 使用时必须同时具备两件事：
 boluo-cli schema material.zc-material.page
 ```
 
-再调用接口：
+高频只读查询可以用 shortcut，避免在命令行里手写 JSON：
+
+```bash
+boluo-cli material +page --search-key 海报 --page-no 1 --page-size 10 --json
+```
+
+原生 API 命令仍然保留 `--params`：
 
 ```bash
 boluo-cli material page --params '{"searchKey":"海报","mtypeList":["img"]}' --json
@@ -93,6 +99,7 @@ boluo-cli <domain> <method>
 
 ```bash
 boluo-cli schema material.zc-material.page
+boluo-cli material +page --search-key 海报 --page-no 1 --page-size 10 --json
 boluo-cli material page --params '{"searchKey":"海报"}' --json
 ```
 
@@ -107,6 +114,7 @@ boluo-cli project-note pj-project-note page --params '{}' --json
 参数位置以 `boluo-cli schema <domain.resource.method>` 输出的 OpenAPI 文档为准：
 
 - `parameters` 中 `in: "query"` 的字段使用 `--params <json>`。
+- `+<method>` shortcut 可把 query 参数写成扁平 flag，例如 `pageNo` 写成 `--page-no`。
 - `requestBody` 中的 JSON 字段使用 `--data <json>`。
 - 高风险写入接口需要 `--yes`
 

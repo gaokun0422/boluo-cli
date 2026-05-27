@@ -115,6 +115,61 @@ test('CLI material short command executes single-resource domain method', async 
   }
 });
 
+test('CLI material shortcut command maps flat flags to query params', async () => {
+  const originalFetch = globalThis.fetch;
+  const output: string[] = [];
+  let calledUrl = '';
+
+  globalThis.fetch = async (input) => {
+    calledUrl = String(input);
+    return new Response(
+      JSON.stringify({
+        code: 0,
+        data: {
+          list: [{ id: 657059, name: 'gaokun测试文件' }],
+          total: 1,
+        },
+      }),
+      { status: 200 },
+    );
+  };
+
+  try {
+    const exitCode = await runCli(
+      [
+        'material',
+        '+page',
+        '--openapi-key',
+        'openapi-key',
+        '--search-key',
+        'gaokun测试文件',
+        '--page-no',
+        '1',
+        '--page-size',
+        '20',
+        '--json',
+      ],
+      (text) => output.push(text),
+      (text) => output.push(text),
+    );
+
+    assert.equal(exitCode, 0);
+    assert.equal(
+      calledUrl,
+      'https://api3.boluo-ai.com/app-api/boluo/open-api/zc-material/page?searchKey=gaokun%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6&pageNo=1&pageSize=20',
+    );
+    assert.deepEqual(JSON.parse(output.join('')), {
+      ok: true,
+      data: {
+        list: [{ id: 657059, name: 'gaokun测试文件' }],
+        total: 1,
+      },
+    });
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test('CLI doctor can verify Java API when requested', async () => {
   const originalFetch = globalThis.fetch;
   const output: string[] = [];

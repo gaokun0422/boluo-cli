@@ -38,6 +38,7 @@ Usage:
   boluo-cli --version
   boluo-cli doctor --json [--check-api]
   boluo-cli schema <domain.resource.method>
+  boluo-cli <domain> +<method> [--field value] --json
   boluo-cli <domain> <method> [--params <json>] [--data <json>] --json [--yes]
   boluo-cli <domain> <resource> <method> [--params <json>] [--data <json>] --json [--yes]
 
@@ -56,6 +57,7 @@ Options:
 
 Examples:
   boluo-cli schema material.zc-material.page
+  boluo-cli material +page --search-key 海报 --page-no 1 --page-size 10 --json
   boluo-cli material page --params '{"pageNo":1,"pageSize":10}' --json
   boluo-cli project-note pj-project-note page --params '{}' --json
 `;
@@ -106,6 +108,7 @@ export async function runCli(
         resolvedCommand.resource,
         resolvedCommand.method,
         resolvedCommand.args,
+        { parseFlatParams: resolvedCommand.parseFlatParams },
       );
       writeJsonSuccess(write, data);
       return 0;
@@ -126,22 +129,38 @@ function resolveRegistryCommand(
   domainName: string,
   command: string,
   commandArgs: string[],
-): { args: string[]; method: string | undefined; resource: string | undefined } {
+): {
+  args: string[];
+  method: string | undefined;
+  parseFlatParams: boolean;
+  resource: string | undefined;
+} {
+  const domain = boluoOpenApiRegistry.domains[domainName];
+  const resourceNames = Object.keys(domain.resources);
+  if (command.startsWith('+') && resourceNames.length === 1) {
+    return {
+      args: commandArgs,
+      method: command.slice(1),
+      parseFlatParams: true,
+      resource: resourceNames[0],
+    };
+  }
+
   const [method, ...registryArgs] = commandArgs;
   if (!method?.startsWith('--')) {
     return {
       args: registryArgs,
       method,
+      parseFlatParams: false,
       resource: command,
     };
   }
 
-  const domain = boluoOpenApiRegistry.domains[domainName];
-  const resourceNames = Object.keys(domain.resources);
   if (command === resourceNames[0]) {
     return {
       args: commandArgs,
       method: undefined,
+      parseFlatParams: false,
       resource: command,
     };
   }
@@ -150,6 +169,7 @@ function resolveRegistryCommand(
     return {
       args: commandArgs,
       method: undefined,
+      parseFlatParams: false,
       resource: command,
     };
   }
@@ -157,6 +177,7 @@ function resolveRegistryCommand(
   return {
     args: commandArgs,
     method: command,
+    parseFlatParams: false,
     resource: resourceNames[0],
   };
 }

@@ -12,11 +12,16 @@ test('material skill uses API Resources as the top-level routing table', () => {
 
   assert.match(markdown, /^## 核心规则$/m);
   assert.match(markdown, /^## 快速决策$/m);
+  assert.match(markdown, /^## 常见任务流程$/m);
   assert.match(markdown, /^## API Resources$/m);
   assert.doesNotMatch(markdown, /## Shortcuts/);
   assert.doesNotMatch(markdown, /快捷命令/);
   assert.match(markdown, /必须先遵守 `boluo\.share`/);
-  assert.match(markdown, /调用任何接口命令前，必须先运行对应 `boluo-cli schema <domain\.resource\.method>`/);
+  assert.match(markdown, /调用 API Resource 原生命令前，必须先运行对应 `boluo-cli schema <domain\.resource\.method>`/);
+  assert.match(markdown, /boluo-cli material \+page --search-key/);
+  assert.match(markdown, /\| 看某个文件夹下有什么素材 \|/);
+  assert.match(markdown, /不要优先调用 `get-tree`，除非用户提供了 `storeId` 和 `innerType`/);
+  assert.match(markdown, /--parent-id <文件夹 ID>/);
   assert.match(markdown, /\| API Resource \| 说明 \|/);
   assert.doesNotMatch(markdown, /\| API Resource \| 场景 \| Schema \| 风险 \|/);
   assert.match(markdown, /\[`boluo-zcMaterial-page`\]\(references\/boluo-zcMaterial-page\.md\).*schema：`material\.zc-material\.page`.*风险：只读/);

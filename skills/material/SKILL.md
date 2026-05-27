@@ -15,7 +15,8 @@ metadata:
 
 - 必须先遵守 `boluo.share`。
 - 所有接口能力都通过 `boluo-cli` 调用。
-- 调用任何接口命令前，必须先运行对应 `boluo-cli schema <domain.resource.method>` 查看参数结构。
+- 调用 API Resource 原生命令前，必须先运行对应 `boluo-cli schema <domain.resource.method>` 查看参数结构。
+- 搜索、浏览、分页等高频只读场景优先使用 shortcut 命令，例如 `boluo-cli material +page --search-key 海报 --page-no 1 --page-size 20 --json`。
 - 只能使用 schema 中存在的参数、字段和接口信息。
 - CLI JSON 输出是唯一事实来源。
 - 不要猜素材 ID、字段、接口路径、权限、请求体、响应结构或业务结果。
@@ -26,10 +27,21 @@ metadata:
 
 | 用户意图 | 使用 API Resource |
 | --- | --- |
-| 找、查、搜索、浏览、筛选素材 | [`boluo-zcMaterial-page`](references/boluo-zcMaterial-page.md) |
+| 看某个文件夹下有什么素材 | 先用 `boluo-cli material +page --search-key <文件夹名> --page-no 1 --page-size 20 --json` 查找文件夹，再用 `--parent-id <文件夹 ID>` 查询该文件夹下素材 |
+| 找、查、搜索、浏览、筛选素材 | 优先用 `boluo-cli material +page --search-key <关键词> --page-no 1 --page-size 20 --json`；复杂参数再看 [`boluo-zcMaterial-page`](references/boluo-zcMaterial-page.md) |
 | 查看素材详情、完整信息、某个素材 | [`boluo-zcMaterial-get`](references/boluo-zcMaterial-get.md) |
 | 用户说“第 N 个” | 先从上一轮 CLI JSON 结果取第 N 项素材 ID，再使用 [`boluo-zcMaterial-get`](references/boluo-zcMaterial-get.md) |
-| 用户说“更多/下一页/继续看” | 沿用上一轮搜索条件，再使用 [`boluo-zcMaterial-page`](references/boluo-zcMaterial-page.md) |
+| 用户说“更多/下一页/继续看” | 沿用上一轮搜索条件，把 `--page-no` 加 1 后再调用 `boluo-cli material +page ... --json` |
+
+## 常见任务流程
+
+### 查看某个文件夹下有什么素材
+
+1. 先读取 `boluo-zcMaterial-page` 的 reference 文档，并运行 `boluo-cli schema material.zc-material.page` 查看参数结构。
+2. 用用户给出的文件夹名称作为 `searchKey` 查询：`boluo-cli material +page --search-key <文件夹名> --page-no 1 --page-size 20 --json`。
+3. 从 CLI JSON 结果中确认文件夹 ID；不能确认时不要猜 ID，说明缺少依据。
+4. 确认文件夹 ID 后，再用 `boluo-cli material +page --parent-id <文件夹 ID> --page-no 1 --page-size 100 --json` 查询该文件夹下素材。
+5. 不要优先调用 `get-tree`，除非用户提供了 `storeId` 和 `innerType`。
 
 ## API Resources
 

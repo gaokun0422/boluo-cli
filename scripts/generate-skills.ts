@@ -55,7 +55,7 @@ export function renderDomainSkill(
     '',
     '- 必须先遵守 `boluo.share`。',
     '- 所有接口能力都通过 `boluo-cli` 调用。',
-    '- 调用任何接口命令前，必须先运行对应 `boluo-cli schema <domain.resource.method>` 查看参数结构。',
+    '- 调用 API Resource 原生命令前，必须先运行对应 `boluo-cli schema <domain.resource.method>` 查看参数结构。',
     '- 只能使用 schema 中存在的参数、字段和接口信息。',
     '- CLI JSON 输出是唯一事实来源。',
     '- 不要猜 ID、字段、接口路径、权限、请求体、响应结构或业务结果。',
