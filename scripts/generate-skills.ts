@@ -219,7 +219,7 @@ async function main(): Promise<void> {
 
     const skillPath = path.join(domainRoot, 'SKILL.md');
     try {
-      const skillMarkdown = await readFile(skillPath, 'utf8');
+      const skillMarkdown = (await readFile(skillPath, 'utf8')).replace(/^\uFEFF/, '');
       await writeFile(
         skillPath,
         replaceDomainSkillApiResources(

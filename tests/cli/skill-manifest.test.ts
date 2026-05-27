@@ -25,6 +25,21 @@ test('manifest declares local skill files that exist', () => {
   }
 });
 
+test('skill files start with frontmatter without UTF-8 BOM', () => {
+  const skillFiles = fs
+    .readdirSync(path.join(repoRoot, 'skills'), { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name === 'SKILL.md');
+
+  for (const skillFile of skillFiles) {
+    const fullPath = path.join(skillFile.parentPath, skillFile.name);
+    const relativePath = path.relative(repoRoot, fullPath);
+    const bytes = fs.readFileSync(fullPath);
+    assert.equal(bytes[0], 0x2d, `${relativePath} should start with ---`);
+    assert.equal(bytes[1], 0x2d, `${relativePath} should start with ---`);
+    assert.equal(bytes[2], 0x2d, `${relativePath} should start with ---`);
+  }
+});
+
 test('package publish files include skills', () => {
   const packageJson = JSON.parse(
     fs.readFileSync(path.join(repoRoot, 'package.json'), 'utf8'),
