@@ -1,4 +1,4 @@
-import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -186,30 +186,6 @@ export function replaceDomainSkillApiResources(
   return `${skillMarkdown.slice(0, markerIndex)}\n${apiResourcesMarkdown}`;
 }
 
-export function normalizeGeneratedMarkdown(markdown: string): string {
-  return markdown.replace(/^\uFEFF/, '');
-}
-
-export async function normalizeSkillMarkdownFiles(skillsRoot: string): Promise<void> {
-  const entries = await readdir(skillsRoot, { withFileTypes: true });
-  await Promise.all(entries
-    .filter((entry) => entry.isDirectory())
-    .map(async (entry) => {
-      const skillPath = path.join(skillsRoot, entry.name, 'SKILL.md');
-      try {
-        const markdown = await readFile(skillPath, 'utf8');
-        const normalizedMarkdown = normalizeGeneratedMarkdown(markdown);
-        if (normalizedMarkdown !== markdown) {
-          await writeFile(skillPath, normalizedMarkdown);
-        }
-      } catch (error) {
-        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
-          throw error;
-        }
-      }
-    }));
-}
-
 async function main(): Promise<void> {
   const skillRoot = path.join(REPO_ROOT, 'skills');
 
@@ -227,17 +203,17 @@ async function main(): Promise<void> {
           referencesRoot,
           fileName,
         );
-      await writeFile(
-        outputPath,
-          normalizeGeneratedMarkdown(renderApiResourceReference(
+        await writeFile(
+          outputPath,
+          renderApiResourceReference(
             domainName,
             resourceName,
             methodName,
             method,
             fileName,
             Object.keys(domain.resources).length === 1,
-          )),
-      );
+          ),
+        );
       }
     }
 
@@ -246,21 +222,19 @@ async function main(): Promise<void> {
       const skillMarkdown = await readFile(skillPath, 'utf8');
       await writeFile(
         skillPath,
-        normalizeGeneratedMarkdown(replaceDomainSkillApiResources(
+        replaceDomainSkillApiResources(
           skillMarkdown,
           renderDomainSkillApiResources(domainName, domain),
-        )),
+        ),
       );
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
         throw error;
       }
 
-      await writeFile(skillPath, normalizeGeneratedMarkdown(renderDomainSkill(domainName, domain)));
+      await writeFile(skillPath, renderDomainSkill(domainName, domain));
     }
   }
-
-  await normalizeSkillMarkdownFiles(skillRoot);
 }
 
 function sortEntries<T extends Record<string, unknown>>(

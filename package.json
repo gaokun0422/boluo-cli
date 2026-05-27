@@ -8,10 +8,8 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./ai-sdk": "./dist/ai-sdk/index.js",
     "./core": "./dist/core/index.js",
-    "./contracts": "./dist/contracts/index.js",
-    "./runtime": "./dist/runtime/index.js"
+    "./contracts": "./dist/contracts/index.js"
   },
   "files": [
     "bin",
@@ -40,18 +38,9 @@
   "dependencies": {
     "zod": "^4.4.3"
   },
-  "peerDependencies": {
-    "ai": "^6.0.0"
-  },
-  "peerDependenciesMeta": {
-    "ai": {
-      "optional": true
-    }
-  },
   "devDependencies": {
     "@types/json-schema": "^7.0.15",
     "@types/node": "^25.8.0",
-    "ai": "^6.0.184",
     "tsx": "^4.20.6",
     "typescript": "^6.0.3"
   },

@@ -196,20 +196,6 @@ skills/
 - `references/boluo-zcMaterial-get.md`：素材详情 API Resource。
 - `references/boluo-<接口模块驼峰>-<功能驼峰>.md`：从 registry 生成的单接口 API Resource 文档。
 
-## Online Runtime
-
-线上 Node AI 服务可以通过 `boluo-cli/ai-sdk` 复用同一份 OpenAPI 能力：
-
-```ts
-import { createBoluoAiSdkRuntime } from 'boluo-cli/ai-sdk';
-
-const runtime = createBoluoAiSdkRuntime({
-  auth: { openApiKey: headers['X-OpenApi-Key'] },
-});
-```
-
-Online Runtime 只面向 AI SDK tools，不输出或要求模型执行 `boluo-cli` 命令。runtime 会直接注入当前 OpenAPI key 可用且 schema 可转换的业务工具。
-
 ## 自动生成
 
 OpenAPI 生成链路：
